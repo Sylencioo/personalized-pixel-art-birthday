@@ -10,7 +10,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="fade-in">
       <h1>{birthdayConfig.name}</h1>
       {birthdayConfig.message.map((line, index) => (
         <p key={index}>{line}</p>
