@@ -26,10 +26,12 @@ export default function Intro({ onOpen }) {
 
   return (
     <div style={styles.container}>
-      <img src={zhongli} alt="Zhongli" style={styles.character} />
+      <div style={styles.characterWrapper}>
+        <div style={styles.dialogueBox}>
+          <p>{dialogue[currentLine]}</p>
+        </div>
 
-      <div style={styles.dialogueBox}>
-        <p>{dialogue[currentLine]}</p>
+        <img src={zhongli} alt="Zhongli" style={styles.character} />
       </div>
 
       {showButton && (
@@ -51,17 +53,25 @@ const styles = {
     background: "#f3ede7",
     gap: "16px",
   },
+  characterWrapper: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
   character: {
     width: "200px",
     imageRendering: "pixelated",
   },
   dialogueBox: {
+    marginBottom: "8px",
     background: "white",
-    padding: "12px 16px",
+    padding: "10px 14px",
     borderRadius: "8px",
-    maxWidth: "280px",
+    maxWidth: "260px",
     textAlign: "center",
     fontFamily: "monospace",
+    boxShadow: "0 4px 0 #ccc",
   },
   button: {
     marginTop: "12px",
