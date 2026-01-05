@@ -117,7 +117,6 @@ const styles = {
   character: {
     width: "200px",
     imageRendering: "pixelated",
-    animation: "bob 2s ease-in-out infinite",
     display: "block",
     borderRadius: "12px",
   },
@@ -128,6 +127,7 @@ const styles = {
     boxShadow: "0 6px 0 #d0b77a",
     display: "inline-block",
     overflow: "hidden",
+    animation: "bob 2s ease-in-out infinite",
   },
   dialogueBox: {
     position: "relative",
