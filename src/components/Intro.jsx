@@ -105,7 +105,8 @@ const styles = {
     borderRadius: "8px",
     maxWidth: "260px",
     textAlign: "center",
-    fontFamily: "monospace",
+    fontSize: "10px",
+    lineHeight: "1.6",
     boxShadow: "0 4px 0 #ccc",
   },
   bubbleTail: {
