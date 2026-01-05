@@ -73,7 +73,9 @@ export default function Intro({ onOpen }) {
         </div>
 
         <div style={styles.characterGlow}></div>
-        <img src={zhongli} alt="Zhongli" style={styles.character} />
+        <div style={styles.frame}>
+          <img src={zhongli} alt="Zhongli" style={styles.character} />
+        </div>
       </div>
 
       {showButton && (
@@ -116,6 +118,16 @@ const styles = {
     width: "200px",
     imageRendering: "pixelated",
     animation: "bob 2s ease-in-out infinite",
+    display: "block",
+    borderRadius: "12px",
+  },
+  frame: {
+    borderRadius: "18px",
+    padding: "6px",
+    background: "white",
+    boxShadow: "0 6px 0 #d0b77a",
+    display: "inline-block",
+    overflow: "hidden",
   },
   dialogueBox: {
     position: "relative",
