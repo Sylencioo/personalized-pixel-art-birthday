@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import Intro from "./components/Intro";
+import MainPage from "./components/MainPage";
 
 export default function App() {
   const [opened, setOpened] = useState(false);
@@ -20,10 +21,10 @@ export default function App() {
       {!opened ? (
         <Intro onOpen={handleOpen} />
       ) : (
-        <div style={{ padding: "20px" }}>
+        <>
           <VolumeControl audioRef={audioRef} />
-          <h1>🎂 Happy Birthday 🎂</h1>
-        </div>
+          <MainPage />
+        </>
       )}
     </>
   );
