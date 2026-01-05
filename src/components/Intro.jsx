@@ -9,26 +9,40 @@ export default function Intro({ onOpen }) {
   ];
 
   const [currentLine, setCurrentLine] = useState(0);
+  const [typedText, setTypedText] = useState("");
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    if (currentLine < dialogue.length - 1) {
-      const timer = setTimeout(() => {
-        setCurrentLine((prev) => prev + 1);
-      }, 2000);
+    const currentText = dialogue[currentLine] || "";
+    let charIndex = 0;
 
-      return () => clearTimeout(timer);
-    } else {
-      const t = setTimeout(() => setShowButton(true), 1000);
-      return () => clearTimeout(t);
-    }
+    setTypedText("");
+
+    const typingInterval = setInterval(() => {
+      setTypedText((prev) => prev + currentText[charIndex]);
+      charIndex++;
+
+      if (charIndex >= currentText.length) {
+        clearInterval(typingInterval);
+
+        if (currentLine < dialogue.length - 1) {
+          setTimeout(() => {
+            setCurrentLine((prev) => prev + 1);
+          }, 1200);
+        } else {
+          setTimeout(() => setShowButton(true), 800);
+        }
+      }
+    }, 50);
+
+    return () => clearInterval(typingInterval);
   }, [currentLine]);
 
   return (
     <div style={styles.container}>
       <div style={styles.characterWrapper}>
         <div style={styles.dialogueBox}>
-          <p>{dialogue[currentLine]}</p>
+          <p>{typedText}</p>
         </div>
 
         <img src={zhongli} alt="Zhongli" style={styles.character} />
