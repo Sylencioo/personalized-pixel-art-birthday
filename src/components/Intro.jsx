@@ -11,6 +11,11 @@ export default function Intro({ onOpen }) {
   const [currentLine, setCurrentLine] = useState(0);
   const [typedText, setTypedText] = useState("");
   const [showButton, setShowButton] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(true);
+  }, []);
 
   useEffect(() => {
     const currentText = dialogue[currentLine] ?? "";
@@ -52,19 +57,34 @@ export default function Intro({ onOpen }) {
     };
   }, [currentLine]);
 
+  const characterWrapperStyle = {
+    ...styles.characterWrapper,
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0)" : "translateY(12px)",
+    transition: "all 1.2s ease",
+  };
+
   return (
     <div style={styles.container}>
-      <div style={styles.characterWrapper}>
+      <div style={characterWrapperStyle}>
         <div style={styles.dialogueBox}>
           <p>{typedText}</p>
           <div style={styles.bubbleTail}></div>
         </div>
 
+        <div style={styles.characterGlow}></div>
         <img src={zhongli} alt="Zhongli" style={styles.character} />
       </div>
 
       {showButton && (
-        <button style={styles.button} onClick={onOpen}>
+        <button
+          style={{
+            ...styles.button,
+            opacity: visible ? 1 : 0,
+            transition: "opacity 1s ease",
+          }}
+          onClick={onOpen}
+        >
           Open
         </button>
       )}
@@ -119,6 +139,15 @@ const styles = {
     borderLeft: "8px solid transparent",
     borderRight: "8px solid transparent",
     borderTop: "8px solid white",
+  },
+  characterGlow: {
+    position: "absolute",
+    width: "220px",
+    height: "220px",
+    background: "rgba(255, 255, 255, 0.35)",
+    filter: "blur(18px)",
+    borderRadius: "50%",
+    zIndex: -1,
   },
   button: {
     marginTop: "12px",
