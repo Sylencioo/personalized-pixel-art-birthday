@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import zhongli from "../assets/zhongli_pixel.png";
 
-export default function Intro({ onOpen }) {
+export default function Intro({ onOpen, onStartAudio }) {
   const dialogue = [
     "Hey there…",
     "I made something special for you.",
@@ -85,7 +85,15 @@ export default function Intro({ onOpen }) {
             opacity: visible ? 1 : 0,
             transition: "opacity 1s ease",
           }}
-          onClick={onOpen}
+          onClick={() => {
+            // start audio immediately from the user gesture to avoid autoplay blocking
+            if (onStartAudio) onStartAudio();
+
+            // fade out intro, then call onOpen to switch to main page
+            setVisible(false);
+            setShowButton(false);
+            setTimeout(() => onOpen(), 800);
+          }}
         >
           Open
         </button>

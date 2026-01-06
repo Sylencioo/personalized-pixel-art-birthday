@@ -1,0 +1,76 @@
+.main-layout {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Ensure FishLayer stays behind */
+.main-layout > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* LEFT SIDE (TEXT) */
+.main-layout .left {
+  flex: 1 1 420px;
+  text-align: left;
+}
+
+.main-layout .left h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.main-layout .left .subtitle {
+  font-size: 14px;
+  max-width: 460px;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+/* RIGHT SIDE (CAKE) */
+.main-layout .right {
+  flex: 1 1 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.main-layout .right img,
+.main-layout .right svg {
+  width: 320px;
+  max-width: 90%;
+}
+
+.cake-hint {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .main-layout {
+    flex-direction: column;
+    padding-top: 24px;
+    gap: 32px;
+  }
+
+  .main-layout .right {
+    order: 2;
+  }
+
+  .main-layout .left h1 {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .main-layout .left .subtitle {
+    text-align: center;
+  }
+}

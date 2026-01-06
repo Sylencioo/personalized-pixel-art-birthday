@@ -1,0 +1,97 @@
+.cake-root {
+  position: relative;
+  width: 160px;
+  height: 180px;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  transform-origin: center bottom;
+}
+
+.cake-shadow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 12px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 50%;
+}
+
+.cake-bottom {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 80px;
+  border-radius: 10px;
+  box-shadow: inset 0 -6px 0 rgba(0,0,0,0.06);
+}
+
+.cake-top {
+  position: absolute;
+  bottom: 88px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 56px;
+  border-radius: 8px;
+  box-shadow: inset 0 -4px 0 rgba(0,0,0,0.06);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.icing {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  height: 14px;
+  border-radius: 6px;
+  box-shadow: 0 2px 0 rgba(255,255,255,0.6) inset;
+}
+
+.candles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, #fff, #ffdede);
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0;
+  animation: sparkle 700ms forwards ease;
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: translateY(4px) scale(0.6); }
+  40% { opacity: 1; transform: translateY(-6px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-10px) scale(0.8); }
+}
+
+@keyframes flicker {
+  0% { transform: translateY(0) scaleY(1); opacity: 1; }
+  50% { transform: translateY(-1px) scaleY(1.05); opacity: 0.9; }
+  100% { transform: translateY(0) scaleY(1); opacity: 1; }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+  60% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+
+.cake-root.bumped {
+  animation: bounce 600ms ease;
+}

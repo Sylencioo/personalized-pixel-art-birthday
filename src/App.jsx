@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import Intro from "./components/Intro";
-import MainPage from "./components/MainPage";
+import MainPage from "./pages/MainPage";
 
 export default function App() {
   const [opened, setOpened] = useState(false);
