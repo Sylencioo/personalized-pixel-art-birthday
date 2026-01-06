@@ -2,6 +2,7 @@ import Cake from "../components/Cake";
 import FishLayer from "../components/FishLayer";
 import FrogSticker from "../components/FrogSticker";
 import WaterOverlay from "../components/WaterOverlay";
+import JellyfishLayer from "../components/JellyfishLayer";
 import "../styles/main.css";
 import "../components/WaterOverlay.css";
 
@@ -9,6 +10,7 @@ export default function MainPage() {
   return (
     <div className="main-page" style={{ position: 'relative' }}>
       <WaterOverlay />
+      <JellyfishLayer />
       <div className="left-panel" style={{ marginLeft: '120px', paddingTop: '64px', position: 'relative' }}>
         <h1 className="title">Happy</h1>
         <h1 className="title">Birthday 🎉🎉</h1>
