@@ -3,7 +3,7 @@ import zhongli from "../assets/zhongli_pixel.png";
 
 export default function Intro({ onOpen, onStartAudio }) {
   const dialogue = [
-    "   Osmanthus wine tastes the same as I remember...",
+    "Osmanthus wine tastes the same as I remember...",
     "But where are those who share the memory?",
     "Care to assist me?"
   ];
@@ -36,7 +36,7 @@ export default function Intro({ onOpen, onStartAudio }) {
     } else {
       typingInterval = setInterval(() => {
         if (charIndexRef.current < chars.length) {
-          setTypedText((prev) => prev + chars[charIndexRef.current]);
+          setTypedText(chars.slice(0, charIndexRef.current + 1).join(""));
           charIndexRef.current++;
         } else {
           clearInterval(typingInterval);

@@ -6,7 +6,11 @@ import JellyfishLayer from "../components/JellyfishLayer";
 import "../styles/main.css";
 import "../components/WaterOverlay.css";
 
+import { useState } from "react";
+// ...existing imports...
+
 export default function MainPage() {
+  const [cakeBlown, setCakeBlown] = useState(false);
   return (
     <div className="main-page" style={{ position: 'relative' }}>
       <WaterOverlay />
@@ -22,9 +26,9 @@ export default function MainPage() {
 
       <div className="right-panel">
         <div style={{ width: '100%', textAlign: 'center' }}>
-          <Cake />
+          <Cake onBlown={() => setCakeBlown(true)} />
           <p className="cake-hint">
-            Click the cake maybe?
+            {cakeBlown ? "FIREE" : "Click the cake maybe?"}
           </p>
         </div>
       </div>
