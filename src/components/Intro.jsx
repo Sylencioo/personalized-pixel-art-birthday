@@ -1,30 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import zhongli from "../assets/zhongli_pixel.png";
 
 export default function Intro({ onOpen, onStartAudio }) {
   const dialogue = [
-    "Hey there…",
-    "I made something special for you.",
-    "Ready to see it?"
+    "   Osmanthus wine tastes the same as I remember...",
+    "But where are those who share the memory?",
+    "Care to assist me?"
   ];
 
   const [currentLine, setCurrentLine] = useState(0);
   const [typedText, setTypedText] = useState("");
   const [showButton, setShowButton] = useState(false);
   const [visible, setVisible] = useState(false);
+  const charIndexRef = useRef(0);
 
   useEffect(() => {
     setVisible(true);
   }, []);
 
   useEffect(() => {
-    const currentText = dialogue[currentLine] ?? "";
+    const currentText = dialogue[currentLine] || "";
     const chars = Array.from(currentText);
-    let charIndex = 0;
     let typingInterval = null;
     let nextTimeout = null;
 
     setTypedText("");
+    charIndexRef.current = 0;
 
     if (chars.length === 0) {
       if (currentLine < dialogue.length - 1) {
@@ -34,14 +35,11 @@ export default function Intro({ onOpen, onStartAudio }) {
       }
     } else {
       typingInterval = setInterval(() => {
-        if (charIndex < chars.length) {
-          setTypedText((prev) => prev + chars[charIndex]);
-          charIndex++;
-        }
-
-        if (charIndex >= chars.length) {
+        if (charIndexRef.current < chars.length) {
+          setTypedText((prev) => prev + chars[charIndexRef.current]);
+          charIndexRef.current++;
+        } else {
           clearInterval(typingInterval);
-
           if (currentLine < dialogue.length - 1) {
             nextTimeout = setTimeout(() => setCurrentLine((prev) => prev + 1), 1200);
           } else {
@@ -95,7 +93,7 @@ export default function Intro({ onOpen, onStartAudio }) {
             setTimeout(() => onOpen(), 800);
           }}
         >
-          Open
+          Venture
         </button>
       )}
     </div>

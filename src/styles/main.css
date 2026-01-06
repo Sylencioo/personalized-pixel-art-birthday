@@ -3,7 +3,7 @@
   height: 100vh;
   background: linear-gradient(#fff8f0, #fdebd3);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .left-panel {
@@ -34,13 +34,14 @@
 }
 
 .cake {
-  width: 340px;
+  width: 800px;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  image-rendering: pixelated;
+  transition: transform 0.2s ease;
 }
 
 .cake:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .cake-clicked {
@@ -53,10 +54,21 @@
   100% { transform: scale(1); }
 }
 
+.cake-hint {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #a86f2d;
+  opacity: 0.8;
+  font-family: "Press Start 2P", monospace;
+  text-align: center;
+  display: block;
+}
+
 .fish-layer {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 0;
 }
 
 .fish {
@@ -64,6 +76,7 @@
   width: 60px;
   animation: swim 20s linear infinite;
   opacity: 0.6;
+  z-index: 0;
 }
 
 .fish-0 { top: 20%; animation-duration: 25s; }
@@ -89,4 +102,34 @@
   position: absolute;
   width: 24px;
   pointer-events: none;
+}
+
+.frog-sticker {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  width: 140px;
+  image-rendering: pixelated;
+  animation: frog-bounce 3s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes frog-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.big-frog {
+  width: 220px !important;
+  max-width: 100%;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  position: static !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 2;
 }
